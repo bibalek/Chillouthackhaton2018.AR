@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/ARScene.unity
     guid: ecf613320dde5804b96e35a2a3322a59
+  - enabled: 1
+    path: Assets/_Scenes/VRScene.unity
+    guid: ba5441baf0995424382cee3262e12b67
