@@ -45,30 +45,11 @@ namespace Sample
             imageCreater = FindObjectOfType<FilesManager>();
         }
 
-        void OnGUI()
+
+
+        public void TakePhoto()
         {
-            if (StartShowMessage)
-            {
-                if (!isShowing)
-                    StartCoroutine(showMessage());
-                StartShowMessage = false;
-            }
-
-            GUI.Box(new Rect(Screen.width / 2 - 250, 30, 500, 60), "The box area will be used as ImageTarget. Take photo!", skin.GetStyle("Box"));
-            GUI.Box(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "", skin.GetStyle("Box"));
-
-            if (isShowing)
-                GUI.Box(new Rect(Screen.width / 2 - 65, Screen.height / 2, 130, 60), "Photo Saved", skin.GetStyle("Box"));
-
-
-            if (GUI.Button(new Rect(Screen.width / 2 - 80, Screen.height - 85, 160, 80), "Take Photo", skin.GetStyle("Button")))
-                imageCreater.StartTakePhoto();
-
-            if (GUI.Button(new Rect(Screen.width - 160, Screen.height - 85, 150, 80), "Clear Targets", skin.GetStyle("Button")))
-            {
-                imageCreater.ClearTexture();
-                imageManager.ClearAllTarget();
-            }
+            imageCreater.StartTakePhoto();
         }
 
         IEnumerator showMessage()
