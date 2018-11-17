@@ -12,13 +12,15 @@ public class MenuController : MonoBehaviour
     private Text loginResult;
 
 
-    public void Login()
+    public async void Login()
     {
         if(applicationController == null)
         {
             applicationController = FindObjectOfType<ApplicationController>();
         }
-        loginResult.text = applicationController.Login() ? "Login Success" : "Login failed";
+        //loginResult.text = applicationController.Login() ? "Login Success" : "Login failed";
+        await applicationController.Login();
+        applicationController.GetCurrentMarkers();
     }
     
     public void GetMarkersFromDatabase()

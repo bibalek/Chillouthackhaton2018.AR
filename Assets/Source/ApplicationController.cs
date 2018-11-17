@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,7 @@ public class ApplicationController : Singleton<ApplicationController>
     }
 
 
-    public bool Login()
+    public async Task<bool> Login()
     {
         user = apiClient.Login(user);
         if(user.FirstName == null && user.LastName == null)
@@ -43,9 +44,10 @@ public class ApplicationController : Singleton<ApplicationController>
         {
             return true;
         }
+
     }
 
-    public void GetCurrentMarkers()
+    public async void GetCurrentMarkers()
     {
         markerModels = apiClient.GetMarkersByUserId(user);
 
