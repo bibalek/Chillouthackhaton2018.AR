@@ -51,7 +51,7 @@ public class VRCameraGaze : MonoBehaviour
 
             if (isGazing)
             {
-                circleToFill.fillAmount += 0.05f;
+                circleToFill.fillAmount += 0.025f;
                 if (circleToFill.fillAmount >= 1)
                 {
                     isGazing = false;
@@ -75,6 +75,8 @@ public class VRCameraGaze : MonoBehaviour
         //    yield return new WaitForSeconds(Time.deltaTime);
         //}
         currentTeleportPoint.GetComponent<TeleportSphereWithCamera>().camera.SetActive(true);
+        isTransition = false;
+
         gameObject.SetActive(false);
         // gameObject.transform.position = new Vector3(currentTeleportPoint.transform.position.x, transform.position.y, currentTeleportPoint.transform.position.z); ;
         //while (fadePanel.color.a > 0)
@@ -84,6 +86,5 @@ public class VRCameraGaze : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         //}
         circleToFill.gameObject.SetActive(true);
-        isTransition = false;
     }
 }

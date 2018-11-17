@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114639297551896316}
   - component: {fileID: 114931007130570588}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: ModelPanel
   m_TagString: ScrollViewItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
