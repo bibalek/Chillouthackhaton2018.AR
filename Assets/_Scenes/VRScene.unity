@@ -165,7 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4fa849ae6ae864b99960906d9b62c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testFurniturePrefab: {fileID: 1618716389978676, guid: 61c6e0c8418573840be34dce74995eee,
+  savedFurniture:
+    piecePosition: {x: 0, y: 0, z: 0}
+    pieceRotation: {x: 0, y: 0, z: 0, w: 0}
+    pieceID: 0
+  testFurniturePrefab: {fileID: 1328735157520884, guid: 29c1ddc66fa1b7d47a6092606248b7cf,
     type: 2}
 --- !u!1 &944071386
 GameObject:
@@ -245,8 +249,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 944071386}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 6.2, y: -12.31, z: 3.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
