@@ -21,6 +21,19 @@ public class MenuController : MonoBehaviour
         loginResult.text = applicationController.Login() ? "Login Success" : "Login failed";
     }
     
+    public void GetMarkersFromDatabase()
+    {
+        ApplicationController.Instance.GetCurrentMarkers();
+    }
 
+    public void SetCurrentModels()
+    {
+        ApplicationController.Instance.SetCurrentModels();
+    }
+
+    public void UpdateMarkerModel()
+    {
+        ApplicationController.Instance.UpdateMarkerModel();
+    }
 
 }

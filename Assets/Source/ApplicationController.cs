@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,6 +69,17 @@ public class ApplicationController : Singleton<ApplicationController>
         RectTransform prefabRect = modelsViewController.itemPrefab.GetComponent<RectTransform>();
         parentRect.sizeDelta = new Vector2(((modelsViewController.items.Count - 1) * modelsViewController.gridGroup.spacing.x) +
             (modelsViewController.gridGroup.cellSize.x * modelsViewController.items.Count), parentRect.sizeDelta.y);
+    }
+
+    public void UpdateMarkerModel()
+    {
+        apiClient.UpdateMarkerModelReference(
+            modelsViewController.selectedItem.GetComponent<Model>().id,
+            user,
+            markersViewController.selectedItem.GetComponent<Marker>().id
+            );
+
+        markerModels.Where(m => m.MarkerID == markersViewController.selectedItem.GetComponent<Marker>().id).First().ModelID = modelsViewController.selectedItem.GetComponent<Model>().id;
     }
 
     public void ConvertByteArraysToImages(List<byte[]> pictures)
