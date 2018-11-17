@@ -19,6 +19,7 @@ public class ModelsViewController : MonoBehaviour
     {
         GameObject newItem = Instantiate(itemPrefab, itemsParent.transform);
         GameObject newModel = Instantiate(prefab, newItem.transform);
+        newModel.transform.position = new Vector3(newModel.transform.position.x, newModel.transform.position.y, newModel.transform.position.z - 100);
         Image newItemImage = newItem.GetComponent<Image>();
         //SetImageOnItem(sprite, newItemImage);
         Button button = newItem.GetComponent<Button>();
