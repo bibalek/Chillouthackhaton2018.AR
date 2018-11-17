@@ -21,7 +21,7 @@ namespace Sample
         private string MarksDirectory;
         private bool isWriting;
         private TargetOnTheFly ui;
-
+        public 
         void Awake()
         {
             ui = FindObjectOfType<TargetOnTheFly>();
