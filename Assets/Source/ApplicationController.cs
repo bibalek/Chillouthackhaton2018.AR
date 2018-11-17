@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +35,7 @@ public class ApplicationController : Singleton<ApplicationController>
     }
 
 
-    public bool Login()
+    public async Task<bool> Login()
     {
         user = apiClient.Login(user);
         if (user.FirstName == null && user.LastName == null)
@@ -44,9 +46,10 @@ public class ApplicationController : Singleton<ApplicationController>
         {
             return true;
         }
+
     }
 
-    public void GetCurrentMarkers()
+    public async void GetCurrentMarkers()
     {
         markerModels = apiClient.GetMarkersByUserId(user);
         Debug.Log("Here there are: " + markerModels.Count);
@@ -70,6 +73,17 @@ public class ApplicationController : Singleton<ApplicationController>
         RectTransform prefabRect = modelsViewController.itemPrefab.GetComponent<RectTransform>();
         parentRect.sizeDelta = new Vector2(((modelsViewController.items.Count - 1) * modelsViewController.gridGroup.spacing.x) +
             (modelsViewController.gridGroup.cellSize.x * modelsViewController.items.Count), parentRect.sizeDelta.y);
+    }
+
+    public void UpdateMarkerModel()
+    {
+        apiClient.UpdateMarkerModelReference(
+            modelsViewController.selectedItem.GetComponent<Model>().id,
+            user,
+            markersViewController.selectedItem.GetComponent<Marker>().id
+            );
+
+        markerModels.Where(m => m.MarkerID == markersViewController.selectedItem.GetComponent<Marker>().id).First().ModelID = modelsViewController.selectedItem.GetComponent<Model>().id;
     }
 
     public void ConvertByteArraysToImages(List<byte[]> pictures)

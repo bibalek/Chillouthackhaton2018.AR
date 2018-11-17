@@ -10,7 +10,7 @@ public class MarkerModelDict : ScriptableObject
 }
 
 [Serializable]
-public class MarkerModelConnection
+public class MarkerModelConnection : MonoBehaviour
 {
     public string objectName = "New MarkerModelConnection";
     public long ModelId;

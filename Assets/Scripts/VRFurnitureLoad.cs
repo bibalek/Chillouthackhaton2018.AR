@@ -15,7 +15,7 @@ namespace EasyAR
         [SerializeField]
         private GameObject wallsParent;
         [SerializeField]
-        MarkerModelDict modelsDict;
+        private List<MarkerModelConnection> modelsDict;
 
         void Start()
         {
@@ -30,7 +30,7 @@ namespace EasyAR
                     savedFurniture = JsonUtility.FromJson<FurniturePieceToSave>(dataAsJson);
                 }
                 GameObject modelToSpawn = null;
-                foreach (MarkerModelConnection model in modelsDict.Connections)
+                foreach (MarkerModelConnection model in modelsDict)
                 {
                     if (model.ModelId == savedFurniture.pieceID)
                     {

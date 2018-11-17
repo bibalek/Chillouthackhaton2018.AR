@@ -58,7 +58,7 @@ public class ApiClient : Singleton<ApiClient>
         return JsonConvert.DeserializeObject<long>(response.Content);
     }
 
-    public void UpdateMarkerModelReference(long modelId, User currentUser, long markerId)
+    public void UpdateMarkerModelReference(long? modelId, User currentUser, long? markerId)
     {
         var request = new RestRequest(Const.updateMarkerModelRefence, Method.POST);
         MarkerModel markerModel = new MarkerModel();

@@ -5,5 +5,5 @@ using UnityEngine;
 public class Model : MonoBehaviour
 {
 
-    public long? id;
+    public long id;
 }
