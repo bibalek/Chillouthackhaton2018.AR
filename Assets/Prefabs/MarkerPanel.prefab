@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114195878691000034}
   - component: {fileID: 114628073303032184}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: MarkerPanel
   m_TagString: ScrollViewItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

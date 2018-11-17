@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 222832213028977472}
   - component: {fileID: 114834876841955958}
   - component: {fileID: 114639297551896316}
-  - component: {fileID: 114931007130570588}
+  - component: {fileID: 114824293247351150}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: ModelPanel
   m_TagString: ScrollViewItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,6 +82,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114824293247351150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021768592503544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50da837e307c14b4180bd31f81604181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114834876841955958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,17 +120,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114931007130570588
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021768592503544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2332c6216658c854990bf683ef17bcb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222832213028977472
 CanvasRenderer:
   m_ObjectHideFlags: 1

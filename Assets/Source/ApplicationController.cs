@@ -15,6 +15,7 @@ public class ApplicationController : MonoBehaviour
     public List<MarkerModel> markerModels;
     public List<Image> images = new List<Image>();
     public MarkersViewController markersViewController;
+    public ModelsViewController modelsViewController;
 
     public User user { get; set; }
 
@@ -49,6 +50,18 @@ public class ApplicationController : MonoBehaviour
         RectTransform prefabRect = markersViewController.itemPrefab.GetComponent<RectTransform>();
         parentRect.sizeDelta = new Vector2(((markersViewController.items.Count - 1) * markersViewController.gridGroup.spacing.x) + 
             (markersViewController.gridGroup.cellSize.x * markersViewController.items.Count), parentRect.sizeDelta.y);
+    }
+
+    public void SetCurrentModels()
+    {
+        foreach(MarkerModelConnection connection in markerModelDict.Connections)
+        {
+            modelsViewController.AddItem(connection.Prefab, connection.ModelId);
+        }
+        RectTransform parentRect = modelsViewController.itemsParent.GetComponent<RectTransform>();
+        RectTransform prefabRect = modelsViewController.itemPrefab.GetComponent<RectTransform>();
+        parentRect.sizeDelta = new Vector2(((modelsViewController.items.Count - 1) * modelsViewController.gridGroup.spacing.x) +
+            (modelsViewController.gridGroup.cellSize.x * modelsViewController.items.Count), parentRect.sizeDelta.y);
     }
 
     public void ConvertByteArraysToImages(List<byte[]> pictures)
