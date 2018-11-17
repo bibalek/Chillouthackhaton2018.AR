@@ -11,7 +11,7 @@ public class VRFurnitureLoad : MonoBehaviour
     private GameObject testFurniturePrefab;
     void Start()
     {
-        string filePath = Application.dataPath + "furnitureTransition";
+        string filePath = Application.persistentDataPath + "furnitureTransition";
         if (File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);

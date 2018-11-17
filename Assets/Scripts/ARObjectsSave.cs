@@ -22,7 +22,7 @@ public class ARObjectsSave : MonoBehaviour
 
         string jsonData = JsonUtility.ToJson(furniturePieceToSave);
         Debug.Log("Json saved: " + jsonData);
-        string filePath = Application.dataPath + "furnitureTransition";
+        string filePath = Application.persistentDataPath + "furnitureTransition";
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
