@@ -41,6 +41,11 @@ namespace EasyAR
 
             }
         }
+
+        public void GoBackButton()
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 }

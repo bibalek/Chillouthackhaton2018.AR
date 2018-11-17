@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace EasyAR
 {
@@ -49,7 +50,12 @@ namespace EasyAR
 
         }
 
+        public void GoBack()
+        {
+            SceneManager.LoadScene(1);
+        }
 
     }
+
 
 }
