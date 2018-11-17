@@ -9,6 +9,6 @@ public class TestController : MonoBehaviour
     public Text debugText;
     public async void Start()
     {
-        apiClient.Test();
+        //apiClient.Test();
     }
 }
