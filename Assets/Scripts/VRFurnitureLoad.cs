@@ -6,7 +6,7 @@ using System.Collections;
 
 public class VRFurnitureLoad : MonoBehaviour
 {
-    public ARFurniturePiece savedFurniture;
+    public FurniturePieceToSave savedFurniture;
     [SerializeField]
     private GameObject testFurniturePrefab;
     void Start()
@@ -15,14 +15,15 @@ public class VRFurnitureLoad : MonoBehaviour
         if (File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);
-            savedFurniture = JsonUtility.FromJson<ARFurniturePiece>(dataAsJson);
+            savedFurniture = JsonUtility.FromJson<FurniturePieceToSave>(dataAsJson);
         }
-        //foreach (ARFurniturePiece piece in savedFurniture.piecesSaved)
-        // {
+
         GameObject pieceToInstantiate = Instantiate(testFurniturePrefab);
-      //  pieceToInstantiate.transform.SetPositionAndRotation(savedFurniture.myTransform.position, savedFurniture.myTransform.rotation);
-        //  furnitureLoaded.
-        //  }
+        Debug.Log("From file: " + "pos: " + savedFurniture.piecePosition + "rot:" + savedFurniture.pieceRotation);
+        pieceToInstantiate.transform.position = savedFurniture.piecePosition;
+        pieceToInstantiate.transform.rotation = savedFurniture.pieceRotation;
+
+        Debug.Log("Instantiated: " + "pos: " + pieceToInstantiate.transform.position + "rot:" + pieceToInstantiate.transform.rotation);
 
     }
 
