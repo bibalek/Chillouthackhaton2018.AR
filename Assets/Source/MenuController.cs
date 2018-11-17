@@ -7,10 +7,22 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField]
     private ApplicationController applicationController;
+    [SerializeField]
+    private GameObject loginPanel;
+    [SerializeField]
+    private GameObject modePanel;
 
     [SerializeField]
     private Text loginResult;
 
+    private void Start()
+    {
+        if(applicationController.userLogged)
+        {
+            loginPanel.SetActive(false);
+            modePanel.SetActive(true);
+        }
+    }
 
     public async void Login()
     {
@@ -19,7 +31,7 @@ public class MenuController : MonoBehaviour
             applicationController = FindObjectOfType<ApplicationController>();
         }
         //loginResult.text = applicationController.Login() ? "Login Success" : "Login failed";
-        await applicationController.Login();
+        applicationController.userLogged =  await applicationController.Login();
         applicationController.GetCurrentMarkers();
     }
     

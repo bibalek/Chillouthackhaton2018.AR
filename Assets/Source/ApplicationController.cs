@@ -20,6 +20,7 @@ public class ApplicationController : Singleton<ApplicationController>
     public ModelsViewController modelsViewController;
 
     public User user { get; set; }
+    public bool userLogged { get; set; }
 
     private void Awake()
     {

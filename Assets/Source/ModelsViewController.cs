@@ -24,7 +24,7 @@ public class ModelsViewController : MonoBehaviour
         Button button = newItem.GetComponent<Button>();
         button.onClick.AddListener(() => SelectItem(newItem));
         newItem.GetComponent<Model>().id = id;
-        newModel.transform.localScale = new Vector3(80, 80, 80);
+        newModel.transform.localScale = new Vector3(100, 100, 100);
         items.Add(newItem);
 
     }

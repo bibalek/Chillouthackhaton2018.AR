@@ -3366,6 +3366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applicationController: {fileID: 579630728}
+  loginPanel: {fileID: 277946788}
+  modePanel: {fileID: 1700738845}
   loginResult: {fileID: 90855568}
 --- !u!114 &841053070
 MonoBehaviour:
