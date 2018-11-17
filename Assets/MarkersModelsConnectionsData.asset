@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: MarkersModelsConnectionsData
+  m_EditorClassIdentifier: Assembly-CSharp::MarkerModelDict
+  Connections:
+  - objectName: 
+    ModelId: 0
+    Prefab: {fileID: 100000, guid: 73b40f9d54bbd3a4aa7158c006cc9ebb, type: 3}
+  - objectName: 
+    ModelId: 1
+    Prefab: {fileID: 100000, guid: 0df35dfa8e31a014593b878c636748f3, type: 3}
+  - objectName: 
+    ModelId: 2
+    Prefab: {fileID: 100000, guid: 9b978051cbbcbc84d9ea5bc1ef1cca8b, type: 3}
