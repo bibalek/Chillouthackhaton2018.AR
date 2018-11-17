@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ApplicationController : MonoBehaviour
+public class ApplicationController : Singleton<ApplicationController>
 {
     [SerializeField]
     private ApiClient apiClient;
@@ -21,9 +21,15 @@ public class ApplicationController : MonoBehaviour
 
     private void Awake()
     {
-        user = new User(Const.userName, Const.userPassword);
-        markerModels = new List<MarkerModel>();
+        base.Awake();
+        if (this != null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            user = new User(Const.userName, Const.userPassword);
+            markerModels = new List<MarkerModel>(); ;
+        }
     }
+
 
     public bool Login()
     {
