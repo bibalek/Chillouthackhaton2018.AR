@@ -51,7 +51,7 @@ public class VRCameraGaze : MonoBehaviour
 
             if (isGazing)
             {
-                circleToFill.fillAmount += 0.01f;
+                circleToFill.fillAmount += 0.05f;
                 if (circleToFill.fillAmount >= 1)
                 {
                     isGazing = false;
@@ -67,22 +67,22 @@ public class VRCameraGaze : MonoBehaviour
     {
         byte alpha = 0;
         isTransition = true;
-        while (fadePanel.color.a < 250)
-        {
+        //while (fadePanel.color.a < 250)
+        //{
 
-            Mathf.Lerp(alpha, 255, 1);
-            fadePanel.color = new Color32(0, 0, 0, alpha);
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        //    Mathf.Lerp(alpha, 255, 1);
+        //    fadePanel.color = new Color32(0, 0, 0, alpha);
+        //    yield return new WaitForSeconds(Time.deltaTime);
+        //}
         currentTeleportPoint.GetComponent<TeleportSphereWithCamera>().camera.SetActive(true);
         gameObject.SetActive(false);
         // gameObject.transform.position = new Vector3(currentTeleportPoint.transform.position.x, transform.position.y, currentTeleportPoint.transform.position.z); ;
-        while (fadePanel.color.a > 0)
-        {
-            alpha--;
-            fadePanel.color = new Color32(0, 0, 0, alpha);
+        //while (fadePanel.color.a > 0)
+        //{
+        //    alpha--;
+        //    fadePanel.color = new Color32(0, 0, 0, alpha);
             yield return new WaitForSeconds(Time.deltaTime);
-        }
+        //}
         circleToFill.gameObject.SetActive(true);
         isTransition = false;
     }
