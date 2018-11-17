@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23912986297560546}
   - component: {fileID: 95003687393633378}
   m_Layer: 0
-  m_Name: Sofa1
+  m_Name: Sofa_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
