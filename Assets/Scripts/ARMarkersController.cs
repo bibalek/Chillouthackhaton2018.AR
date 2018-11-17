@@ -9,6 +9,10 @@ public class ARMarkersController : MonoBehaviour
     void Start()
     {
         Debug.Log("in list there are: " + ApplicationController.Instance.markerModels.Count);
+        foreach (MarkerModel modelSaved in ApplicationController.Instance.markerModels)
+        {
+
+        }
     }
 
 
