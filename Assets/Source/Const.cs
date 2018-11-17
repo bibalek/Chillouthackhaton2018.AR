@@ -12,5 +12,7 @@ public class Const
 
     public const string userLogin = "users/userexists";
     public const string getMarkersByUserId = "markers/getusersmarkers";
+    public const string saveMarkerModelByUserId = "Markers/AddUserMarker";
+    public const string updateMarkerModelRefence = "Markers/UpdateMarkerModelReference";
 
 }

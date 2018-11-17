@@ -21,7 +21,7 @@ namespace Sample
         private string MarksDirectory;
         private bool isWriting;
         private TargetOnTheFly ui;
-
+        public 
         void Awake()
         {
             ui = FindObjectOfType<TargetOnTheFly>();
@@ -44,8 +44,6 @@ namespace Sample
 
             Texture2D photo = new Texture2D(Screen.width / 2, Screen.height / 2, TextureFormat.RGB24, false);
             photo.ReadPixels(new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), 0, 0, false);
-            photo.Apply();
-
             byte[] data = photo.EncodeToJPG(80);
             DestroyImmediate(photo);
             photo = null;
