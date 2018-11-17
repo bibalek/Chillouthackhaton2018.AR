@@ -5,10 +5,17 @@ using UnityEngine.XR;
 
 public class ARVRScenesTransition : MonoBehaviour
 {
+    public static bool isVr;
 
     void Start()
     {
-        StartCoroutine(ActivateVR());
+        if (isVr)
+            StartCoroutine(ActivateVR());
+        else
+        {
+            Camera.main.GetComponent<NoVrCameraMovement>().enabled = true;
+        }
+
     }
 
     IEnumerator ActivateVR()
@@ -17,5 +24,4 @@ public class ARVRScenesTransition : MonoBehaviour
         yield return null;
         XRSettings.enabled = true;
     }
-
 }

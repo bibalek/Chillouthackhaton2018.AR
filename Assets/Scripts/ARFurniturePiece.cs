@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ARFurniturePiece : MonoBehaviour
+namespace EasyAR
 {
-    public int pieceID;
-    ARObjectsSave arObjectsManager;
-    private void Awake()
+
+    [System.Serializable]
+    public class ARFurniturePiece : MonoBehaviour
     {
-        arObjectsManager = FindObjectOfType<ARObjectsSave>();
+        public int pieceID;
+        ARObjectsSave arObjectsManager;
+        private void Awake()
+        {
+            arObjectsManager = FindObjectOfType<ARObjectsSave>();
+
+        }
+
+        private void OnEnable()
+        {
+            if (!arObjectsManager.piecesOnARScene.Contains(this))
+                arObjectsManager.piecesOnARScene.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            if (arObjectsManager.piecesOnARScene.Contains(this))
+                arObjectsManager.piecesOnARScene.Remove(this);
+        }
 
     }
-
-    private void OnEnable()
-    {
-        if (!arObjectsManager.piecesOnARScene.Contains(this))
-            arObjectsManager.piecesOnARScene.Add(this);
-    }
-
-    private void OnDisable()
-    {
-        if (arObjectsManager.piecesOnARScene.Contains(this))
-            arObjectsManager.piecesOnARScene.Remove(this);
-    }
-
 }
