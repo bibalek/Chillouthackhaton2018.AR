@@ -15,7 +15,7 @@ public class ModelsViewController : MonoBehaviour
 
     public Transform selectedItem;
 
-    public void AddItem(GameObject prefab, long id)
+    public void AddItem(GameObject prefab, long? id)
     {
         GameObject newItem = Instantiate(itemPrefab, itemsParent.transform);
         GameObject newModel = Instantiate(prefab, newItem.transform);
@@ -24,7 +24,7 @@ public class ModelsViewController : MonoBehaviour
         Button button = newItem.GetComponent<Button>();
         button.onClick.AddListener(() => SelectItem(newItem));
         newItem.GetComponent<Model>().id = id;
-        newModel.transform.localScale = new Vector3(80, 80, 80);
+        newModel.transform.localScale = new Vector3(100, 100, 100);
         items.Add(newItem);
 
     }

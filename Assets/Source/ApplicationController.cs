@@ -1,27 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class ModelPair
+{
+    public long id;
+    public GameObject prefab;
+}
+
+
+
 public class ApplicationController : Singleton<ApplicationController>
 {
-
-    public ApiClient apiClient;
+    [SerializeField]
+    private ApiClient apiClient;
     [SerializeField]
     private Image image;
 
+    public List<ModelPair> modelPairs = new List<ModelPair>();
 
-    public MarkerModelDict markerModelDict;
-
+    //public MarkerModelDict markerModelDict;
     public List<MarkerModel> markerModels;
-
     public List<Image> images = new List<Image>();
     public MarkersViewController markersViewController;
     public ModelsViewController modelsViewController;
 
     public User user { get; set; }
+    public bool userLogged { get; set; }
 
     private void Awake()
     {
@@ -30,7 +40,7 @@ public class ApplicationController : Singleton<ApplicationController>
         {
             DontDestroyOnLoad(this.gameObject);
             user = new User(Const.userName, Const.userPassword);
-            markerModels = new List<MarkerModel>();
+            markerModels = new List<MarkerModel>(); ;
         }
     }
 
@@ -38,7 +48,7 @@ public class ApplicationController : Singleton<ApplicationController>
     public async Task<bool> Login()
     {
         user = apiClient.Login(user);
-        if (user.FirstName == null && user.LastName == null)
+        if(user.FirstName == null && user.LastName == null)
         {
             return false;
         }
@@ -52,22 +62,22 @@ public class ApplicationController : Singleton<ApplicationController>
     public async void GetCurrentMarkers()
     {
         markerModels = apiClient.GetMarkersByUserId(user);
-        Debug.Log("Here there are: " + markerModels.Count);
-        foreach (MarkerModel markerModel in markerModels)
+
+        foreach(MarkerModel markerModel in markerModels)
         {
             markersViewController.AddItem(ConvertByteArrayToImage(markerModel.Picture), markerModel.MarkerID);
         }
         RectTransform parentRect = markersViewController.itemsParent.GetComponent<RectTransform>();
         RectTransform prefabRect = markersViewController.itemPrefab.GetComponent<RectTransform>();
-        parentRect.sizeDelta = new Vector2(((markersViewController.items.Count - 1) * markersViewController.gridGroup.spacing.x) +
+        parentRect.sizeDelta = new Vector2(((markersViewController.items.Count - 1) * markersViewController.gridGroup.spacing.x) + 
             (markersViewController.gridGroup.cellSize.x * markersViewController.items.Count), parentRect.sizeDelta.y);
     }
 
     public void SetCurrentModels()
     {
-        foreach (MarkerModelConnection connection in markerModelDict.Connections)
+        foreach(ModelPair pair in modelPairs)
         {
-            modelsViewController.AddItem(connection.Prefab, connection.ModelId);
+            modelsViewController.AddItem(pair.prefab, pair.id);
         }
         RectTransform parentRect = modelsViewController.itemsParent.GetComponent<RectTransform>();
         RectTransform prefabRect = modelsViewController.itemPrefab.GetComponent<RectTransform>();
@@ -89,7 +99,7 @@ public class ApplicationController : Singleton<ApplicationController>
     public void ConvertByteArraysToImages(List<byte[]> pictures)
     {
         Sprite sprite;
-        foreach (byte[] picture in pictures)
+        foreach(byte[] picture in pictures)
         {
             sprite = ConvertByteArrayToImage(picture);
             Image image;
