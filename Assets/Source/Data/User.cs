@@ -17,14 +17,3 @@ public class User
     }
 }
 
-
-public class LoginForm
-{
-    public LoginForm(string userName, string password)
-    {
-        
-    }
-
-    public string UserName = Const.loginUser;
-    public string Password = Const.loginPassword;
-}

@@ -9,7 +9,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System;
-using Assets.Source.Extension;
 using System.IO;
 using RestSharp;
 using Newtonsoft.Json;
@@ -22,11 +21,19 @@ public class ApiClient : MonoBehaviour
 
     public User Login(User currentUser)
     {
-        var request = new RestRequest(Const.loginEndpoint, Method.POST);
+        var request = new RestRequest(Const.userLogin, Method.POST);
         request.AddJsonBody(currentUser);
         var response = restClient.Execute(request);
         var json = response.Content;
         return JsonConvert.DeserializeObject<User>(json);
+    }
+
+    public List<MarkerModel> GetMarkersByUserId(User currentUser)
+    {
+        var request = new RestRequest(Const.getMarkersByUserId, Method.GET);
+        request.AddParameter("userId", currentUser.UserID, ParameterType.GetOrPost);
+        var response = restClient.Execute(request);
+        return JsonConvert.DeserializeObject<List<MarkerModel>>(response.Content);
     }
 }
 

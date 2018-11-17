@@ -7,8 +7,10 @@ public class Const
 
     public const string WebApi = "http://10.4.0.111/hackathon/api/";
 
-    public const string loginUser = "user";
-    public const string loginPassword = "userpassword";
+    public const string userName = "user";
+    public const string userPassword = "userpassword";
 
-    public const string loginEndpoint = "users/userexists";
+    public const string userLogin = "users/userexists";
+    public const string getMarkersByUserId = "markers/getusersmarkers";
+
 }

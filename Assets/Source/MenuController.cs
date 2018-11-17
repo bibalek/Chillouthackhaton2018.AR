@@ -17,4 +17,6 @@ public class MenuController : MonoBehaviour
         loginResult.text = applicationController.Login() ? "Login Success" : "Login failed";
     }
     
+
+
 }
