@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ScrollViewItem
+  - teleport
   layers:
   - Default
   - TransparentFX
@@ -14,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - meble
+  - 
   - 
   - 
   - 
