@@ -1,9 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+public class ModelPair
+{
+    public long id;
+    public GameObject prefab;
+}
+
+
 
 public class ApplicationController : Singleton<ApplicationController>
 {
@@ -11,9 +21,10 @@ public class ApplicationController : Singleton<ApplicationController>
     private ApiClient apiClient;
     [SerializeField]
     private Image image;
-    
 
-    public MarkerModelDict markerModelDict;
+    public List<ModelPair> modelPairs = new List<ModelPair>();
+
+    //public MarkerModelDict markerModelDict;
     public List<MarkerModel> markerModels;
     public List<Image> images = new List<Image>();
     public MarkersViewController markersViewController;
@@ -64,9 +75,9 @@ public class ApplicationController : Singleton<ApplicationController>
 
     public void SetCurrentModels()
     {
-        foreach(MarkerModelConnection connection in markerModelDict.Connections)
+        foreach(ModelPair pair in modelPairs)
         {
-            modelsViewController.AddItem(connection.Prefab, connection.ModelId);
+            modelsViewController.AddItem(pair.prefab, pair.id);
         }
         RectTransform parentRect = modelsViewController.itemsParent.GetComponent<RectTransform>();
         RectTransform prefabRect = modelsViewController.itemPrefab.GetComponent<RectTransform>();

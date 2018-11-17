@@ -15,7 +15,7 @@ public class ModelsViewController : MonoBehaviour
 
     public Transform selectedItem;
 
-    public void AddItem(GameObject prefab, long id)
+    public void AddItem(GameObject prefab, long? id)
     {
         GameObject newItem = Instantiate(itemPrefab, itemsParent.transform);
         GameObject newModel = Instantiate(prefab, newItem.transform);

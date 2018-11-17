@@ -2116,7 +2116,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   apiClient: {fileID: 841053071}
   image: {fileID: 114108014793468492, guid: 98d0613b9a8f7bf428949e59de3d7be5, type: 2}
-  markerModelDict: {fileID: 11400000, guid: a37635551a33db144a6ecdef3ecd295d, type: 2}
+  modelPairs:
+  - id: 0
+    prefab: {fileID: 1202610738706522, guid: c9abfafbc4690a842a151737a9ee032b, type: 2}
+  - id: 1
+    prefab: {fileID: 1946831750316466, guid: 770bee578ba80754f8817400b06067c6, type: 2}
+  - id: 2
+    prefab: {fileID: 1528393117079578, guid: 2d0e6e8391e8d0a43875efa735010e96, type: 2}
+  - id: 3
+    prefab: {fileID: 1487415349907058, guid: d66028a6c6eef60479acbc800bc57d6a, type: 2}
+  - id: 4
+    prefab: {fileID: 1804780532502470, guid: 84b099f6707745e429d4d2b52c7eeb60, type: 2}
+  - id: 5
+    prefab: {fileID: 1841152118206906, guid: b96892331ab45e9499a09af4f1470c6a, type: 2}
+  - id: 6
+    prefab: {fileID: 1216704000014692, guid: f5e2d619a621fa14d98cec09f21119bd, type: 2}
+  - id: 7
+    prefab: {fileID: 1176991721755334, guid: e85d9e6b162b6d248a4830a46eb7ed25, type: 2}
+  - id: 8
+    prefab: {fileID: 1722271078837470, guid: 2b307f404c0fc1b4998169a94d0d2e31, type: 2}
+  - id: 9
+    prefab: {fileID: 1229126542746914, guid: 55a2d2c9ad15a3a4ea894c84f1aabfd7, type: 2}
+  - id: 10
+    prefab: {fileID: 1157175349677630, guid: 9f098dd45e54ded448a54f6d50a3f17e, type: 2}
   images: []
   markersViewController: {fileID: 841053072}
   modelsViewController: {fileID: 841053073}
