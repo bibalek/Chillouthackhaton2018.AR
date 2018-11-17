@@ -4,31 +4,36 @@ using UnityEngine;
 using System.IO;
 using System.Collections;
 
-public class VRFurnitureLoad : MonoBehaviour
+namespace EasyAR
 {
-    public FurniturePieceToSave savedFurniture;
-    [SerializeField]
-    private GameObject testFurniturePrefab;
-    [SerializeField]
-    private GameObject wallsParent;
-    void Start()
+
+    public class VRFurnitureLoad : MonoBehaviour
     {
-        string filePath = Application.persistentDataPath + "furnitureTransition";
-        if (File.Exists(filePath))
+        public FurniturePieceToSave savedFurniture;
+        [SerializeField]
+        private GameObject testFurniturePrefab;
+        [SerializeField]
+        private GameObject wallsParent;
+        void Start()
         {
-            string dataAsJson = File.ReadAllText(filePath);
-            savedFurniture = JsonUtility.FromJson<FurniturePieceToSave>(dataAsJson);
+            string filePath = Application.persistentDataPath + "furnitureTransition";
+            if (File.Exists(filePath))
+            {
+                string dataAsJson = File.ReadAllText(filePath);
+                savedFurniture = JsonUtility.FromJson<FurniturePieceToSave>(dataAsJson);
+            }
+
+            GameObject pieceToInstantiate = Instantiate(testFurniturePrefab, wallsParent.transform);
+            Debug.Log("From file: " + "pos: " + savedFurniture.piecePosition + "rot:" + savedFurniture.pieceRotation);
+            pieceToInstantiate.transform.localPosition = savedFurniture.piecePosition;//pieceToInstantiate.transform.InverseTransformDirection(savedFurniture.piecePosition);
+            pieceToInstantiate.transform.localScale = new Vector3(1, 1, 1);
+            pieceToInstantiate.transform.localRotation = new Quaternion(savedFurniture.pieceRotation.x, savedFurniture.pieceRotation.y, 0, savedFurniture.pieceRotation.w);
+
+            Debug.Log("Instantiated: " + "pos: " + pieceToInstantiate.transform.position + "rot:" + pieceToInstantiate.transform.rotation);
+
         }
 
-        GameObject pieceToInstantiate = Instantiate(testFurniturePrefab, wallsParent.transform);
-        Debug.Log("From file: " + "pos: " + savedFurniture.piecePosition + "rot:" + savedFurniture.pieceRotation);
-        pieceToInstantiate.transform.position = pieceToInstantiate.transform.InverseTransformDirection(savedFurniture.piecePosition);
-
-        pieceToInstantiate.transform.localRotation = savedFurniture.pieceRotation;
-
-        Debug.Log("Instantiated: " + "pos: " + pieceToInstantiate.transform.position + "rot:" + pieceToInstantiate.transform.rotation);
 
     }
-
 
 }

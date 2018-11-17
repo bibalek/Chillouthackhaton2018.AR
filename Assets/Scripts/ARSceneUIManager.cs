@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ARSceneUIManager : MonoBehaviour
+namespace EasyAR
 {
 
-    public void LoadVRScene()
+    public class ARSceneUIManager : MonoBehaviour
     {
-        ARObjectsSave save = FindObjectOfType<ARObjectsSave>();
-        save.SaveAllARFurniture();
-        SceneManager.LoadScene(1);
+
+        public void LoadVRScene(bool isVr)
+        {
+            ARVRScenesTransition.isVr = isVr;
+            ARObjectsSave save = FindObjectOfType<ARObjectsSave>();
+            save.SaveAllARFurniture();
+            SceneManager.LoadScene(1);
+        }
     }
+
 }
