@@ -6,6 +6,8 @@ using System.Collections;
 public class ARObjectsSave : MonoBehaviour
 {
     public List<ARFurniturePiece> piecesOnARScene;
+    [SerializeField]
+    private GameObject wallsMock;
 
     private void Awake()
     {
@@ -15,14 +17,15 @@ public class ARObjectsSave : MonoBehaviour
     public void SaveAllARFurniture()
     {
         FurniturePieceToSave furniturePieceToSave = new FurniturePieceToSave();
+        //piecesOnARScene[0].transform.SetParent(wallsMock.transform);
         furniturePieceToSave.pieceID = piecesOnARScene[0].pieceID;
-        furniturePieceToSave.piecePosition = piecesOnARScene[0].gameObject.transform.position;
+        furniturePieceToSave.piecePosition = piecesOnARScene[0].transform.InverseTransformPoint(wallsMock.transform.position);//piecesOnARScene[0].gameObject.transform.position;
         furniturePieceToSave.pieceRotation = piecesOnARScene[0].gameObject.transform.rotation;
 
 
         string jsonData = JsonUtility.ToJson(furniturePieceToSave);
         Debug.Log("Json saved: " + jsonData);
-        string filePath = Application.dataPath + "furnitureTransition";
+        string filePath = Application.persistentDataPath + "furnitureTransition";
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
