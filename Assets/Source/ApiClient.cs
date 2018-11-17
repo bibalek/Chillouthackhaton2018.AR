@@ -36,7 +36,7 @@ public class ApiClient : MonoBehaviour
         return JsonConvert.DeserializeObject<List<MarkerModel>>(response.Content);
     }
 
-    public void SaveMarkerModel(byte[] picture, long modelId, User currentUser)
+    public long SaveMarkerModel(byte[] picture, long modelId, User currentUser)
     {
         var request = new RestRequest(Const.saveMarkerModelByUserId, Method.POST);
         MarkerModel markerModel = new MarkerModel();
@@ -45,6 +45,7 @@ public class ApiClient : MonoBehaviour
         markerModel.ModelID = modelId;
         request.AddJsonBody(markerModel);
         var response = restClient.Execute(request);
+        return JsonConvert.DeserializeObject<long>(response.Content);
     }
 
     public void UpdateMarkerModelReference(long modelId, User currentUser, long markerId)

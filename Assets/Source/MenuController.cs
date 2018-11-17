@@ -14,6 +14,10 @@ public class MenuController : MonoBehaviour
 
     public void Login()
     {
+        if(applicationController == null)
+        {
+            applicationController = FindObjectOfType<ApplicationController>();
+        }
         loginResult.text = applicationController.Login() ? "Login Success" : "Login failed";
     }
     

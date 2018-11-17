@@ -682,6 +682,52 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224519080489202112, guid: 98d0613b9a8f7bf428949e59de3d7be5,
     type: 2}
   m_PrefabInternal: {fileID: 391487848}
+--- !u!1 &579630727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 579630729}
+  - component: {fileID: 579630728}
+  m_Layer: 0
+  m_Name: DDOL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &579630728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579630727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f9642470bb156488585da053bf5d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apiClient: {fileID: 841053071}
+  image: {fileID: 114108014793468492, guid: 98d0613b9a8f7bf428949e59de3d7be5, type: 2}
+  markerModelDict: {fileID: 11400000, guid: a37635551a33db144a6ecdef3ecd295d, type: 2}
+  images: []
+  markersViewController: {fileID: 841053072}
+  modelsViewController: {fileID: 841053073}
+--- !u!4 &579630729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579630727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 179.37523, y: 211.15778, z: 38.375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609704813
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +977,6 @@ GameObject:
   - component: {fileID: 841053068}
   - component: {fileID: 841053067}
   - component: {fileID: 841053071}
-  - component: {fileID: 841053070}
   - component: {fileID: 841053069}
   - component: {fileID: 841053072}
   - component: {fileID: 841053073}
@@ -979,25 +1024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b651f613f86ad49b1e1c0cb881df71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applicationController: {fileID: 841053070}
+  applicationController: {fileID: 579630728}
   loginResult: {fileID: 90855568}
---- !u!114 &841053070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 841053066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f9642470bb156488585da053bf5d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiClient: {fileID: 841053071}
-  image: {fileID: 114108014793468492, guid: 98d0613b9a8f7bf428949e59de3d7be5, type: 2}
-  markerModelDict: {fileID: 11400000, guid: a37635551a33db144a6ecdef3ecd295d, type: 2}
-  images: []
-  markersViewController: {fileID: 841053072}
-  modelsViewController: {fileID: 841053073}
 --- !u!114 &841053071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,7 +2327,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 841053070}
+      - m_Target: {fileID: 0}
         m_MethodName: SetCurrentModels
         m_Mode: 1
         m_Arguments:
@@ -3258,7 +3286,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 841053070}
+      - m_Target: {fileID: 0}
         m_MethodName: GetCurrentMarkers
         m_Mode: 1
         m_Arguments:
