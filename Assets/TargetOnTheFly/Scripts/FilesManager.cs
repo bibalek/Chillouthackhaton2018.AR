@@ -64,7 +64,7 @@ namespace Sample
             DestroyImmediate(photo);
             photo = null;
 
-            string photoPath = Path.Combine(Application.streamingAssetsPath + "/" + myMarkerID.ToString() + ".jpg");
+            string photoPath = Path.Combine(Application.streamingAssetsPath + "/" + "abc" + ".jpg");
 
 
             FileStream file = File.Open(photoPath, FileMode.Create);

@@ -17,8 +17,7 @@ public class ModelPair
 
 public class ApplicationController : Singleton<ApplicationController>
 {
-    [SerializeField]
-    private ApiClient apiClient;
+    public ApiClient apiClient;
     [SerializeField]
     private Image image;
 
