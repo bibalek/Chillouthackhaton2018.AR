@@ -397,6 +397,7 @@ MonoBehaviour:
   testFurniturePrefab: {fileID: 1900420334710976, guid: f243d1b9bfc2fbf49ae4bbfa021c40d1,
     type: 2}
   wallsParent: {fileID: 1342969864}
+  modelsDict: {fileID: 11400000, guid: a37635551a33db144a6ecdef3ecd295d, type: 2}
 --- !u!1 &143078746
 GameObject:
   m_ObjectHideFlags: 0

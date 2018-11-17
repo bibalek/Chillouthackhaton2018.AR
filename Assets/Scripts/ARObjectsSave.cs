@@ -19,22 +19,28 @@ namespace EasyAR
 
         public void SaveAllARFurniture()
         {
-            FurniturePieceToSave furniturePieceToSave = new FurniturePieceToSave();
-            piecesOnARScene[0].GetComponent<ImageTargetBaseBehaviour>().enabled = false;
-            piecesOnARScene[0].transform.SetParent(wallsMock.transform);
-            furniturePieceToSave.pieceID = piecesOnARScene[0].pieceID;
-            furniturePieceToSave.piecePosition = /*piecesOnARScene[0].transform.InverseTransformPoint(wallsMock.transform.position);*/piecesOnARScene[0].gameObject.transform.localPosition;
-            furniturePieceToSave.pieceRotation = piecesOnARScene[0].gameObject.transform.localRotation;
-
-
-            string jsonData = JsonUtility.ToJson(furniturePieceToSave);
-            Debug.Log("Json saved: " + jsonData);
-            string filePath = Application.persistentDataPath + "furnitureTransition";
-            if (File.Exists(filePath))
+            int index = 0;
+            foreach (ARFurniturePiece piece in piecesOnARScene)
             {
-                File.Delete(filePath);
+                index++;
+                FurniturePieceToSave furniturePieceToSave = new FurniturePieceToSave();
+                piece.GetComponent<ImageTargetBaseBehaviour>().enabled = false;
+                piece.transform.SetParent(wallsMock.transform);
+                furniturePieceToSave.pieceID = piece.pieceID;
+                furniturePieceToSave.piecePosition = /*piecesOnARScene[0].transform.InverseTransformPoint(wallsMock.transform.position);*/piece.gameObject.transform.localPosition;
+                furniturePieceToSave.pieceRotation = piece.gameObject.transform.localRotation;
+
+
+                string jsonData = JsonUtility.ToJson(furniturePieceToSave);
+                Debug.Log("Json saved: " + jsonData);
+                string filePath = Application.persistentDataPath + "furnitureTransition" + index.ToString();
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+                File.WriteAllText(filePath, jsonData);
             }
-            File.WriteAllText(filePath, jsonData);
+            PlayerPrefs.SetInt("HowManyTransitioned", index);
         }
 
     }

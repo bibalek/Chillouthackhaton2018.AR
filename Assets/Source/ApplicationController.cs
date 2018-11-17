@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class ApplicationController : Singleton<ApplicationController>
 {
-    [SerializeField]
-    private ApiClient apiClient;
+
+    public ApiClient apiClient;
     [SerializeField]
     private Image image;
-    
+
 
     public MarkerModelDict markerModelDict;
+
     public List<MarkerModel> markerModels;
+
     public List<Image> images = new List<Image>();
     public MarkersViewController markersViewController;
     public ModelsViewController modelsViewController;
@@ -26,7 +28,7 @@ public class ApplicationController : Singleton<ApplicationController>
         {
             DontDestroyOnLoad(this.gameObject);
             user = new User(Const.userName, Const.userPassword);
-            markerModels = new List<MarkerModel>(); ;
+            markerModels = new List<MarkerModel>();
         }
     }
 
@@ -34,7 +36,7 @@ public class ApplicationController : Singleton<ApplicationController>
     public bool Login()
     {
         user = apiClient.Login(user);
-        if(user.FirstName == null && user.LastName == null)
+        if (user.FirstName == null && user.LastName == null)
         {
             return false;
         }
@@ -47,20 +49,20 @@ public class ApplicationController : Singleton<ApplicationController>
     public void GetCurrentMarkers()
     {
         markerModels = apiClient.GetMarkersByUserId(user);
-
-        foreach(MarkerModel markerModel in markerModels)
+        Debug.Log("Here there are: " + markerModels.Count);
+        foreach (MarkerModel markerModel in markerModels)
         {
             markersViewController.AddItem(ConvertByteArrayToImage(markerModel.Picture), markerModel.MarkerID);
         }
         RectTransform parentRect = markersViewController.itemsParent.GetComponent<RectTransform>();
         RectTransform prefabRect = markersViewController.itemPrefab.GetComponent<RectTransform>();
-        parentRect.sizeDelta = new Vector2(((markersViewController.items.Count - 1) * markersViewController.gridGroup.spacing.x) + 
+        parentRect.sizeDelta = new Vector2(((markersViewController.items.Count - 1) * markersViewController.gridGroup.spacing.x) +
             (markersViewController.gridGroup.cellSize.x * markersViewController.items.Count), parentRect.sizeDelta.y);
     }
 
     public void SetCurrentModels()
     {
-        foreach(MarkerModelConnection connection in markerModelDict.Connections)
+        foreach (MarkerModelConnection connection in markerModelDict.Connections)
         {
             modelsViewController.AddItem(connection.Prefab, connection.ModelId);
         }
@@ -73,7 +75,7 @@ public class ApplicationController : Singleton<ApplicationController>
     public void ConvertByteArraysToImages(List<byte[]> pictures)
     {
         Sprite sprite;
-        foreach(byte[] picture in pictures)
+        foreach (byte[] picture in pictures)
         {
             sprite = ConvertByteArrayToImage(picture);
             Image image;

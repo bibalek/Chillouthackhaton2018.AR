@@ -13,11 +13,21 @@ using System.IO;
 using RestSharp;
 using Newtonsoft.Json;
 
-public class ApiClient : MonoBehaviour
+public class ApiClient : Singleton<ApiClient>
 {
     public TestController testController;
 
     private RestClient restClient = new RestClient(Const.WebApi);
+
+    private void Awake()
+    {
+        base.Awake();
+        if (this != null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+
+        }
+    }
 
     public User Login(User currentUser)
     {
