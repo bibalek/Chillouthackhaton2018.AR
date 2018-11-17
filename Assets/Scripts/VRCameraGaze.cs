@@ -67,9 +67,10 @@ public class VRCameraGaze : MonoBehaviour
     {
         byte alpha = 0;
         isTransition = true;
-        while (fadePanel.color.a < 1)
+        while (fadePanel.color.a < 250)
         {
-            alpha++;
+
+            Mathf.Lerp(alpha, 255, 1);
             fadePanel.color = new Color32(0, 0, 0, alpha);
             yield return new WaitForSeconds(Time.deltaTime);
         }
