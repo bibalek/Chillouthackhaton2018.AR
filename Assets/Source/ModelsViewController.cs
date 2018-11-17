@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MarkersViewController : MonoBehaviour
+public class ModelsViewController : MonoBehaviour
 {
-    //public DynamicHScrollView scrollView;
     public Text debugText;
     public GameObject itemsParent;
     public GridLayoutGroup gridGroup;
@@ -16,14 +15,16 @@ public class MarkersViewController : MonoBehaviour
 
     public Transform selectedItem;
 
-    public void AddItem(Sprite sprite, long? id)
+    public void AddItem(GameObject prefab, long id)
     {
         GameObject newItem = Instantiate(itemPrefab, itemsParent.transform);
+        GameObject newModel = Instantiate(prefab, newItem.transform);
         Image newItemImage = newItem.GetComponent<Image>();
-        SetImageOnItem(sprite, newItemImage);
+        //SetImageOnItem(sprite, newItemImage);
         Button button = newItem.GetComponent<Button>();
         button.onClick.AddListener(() => SelectItem(newItem));
-        newItem.GetComponent<Marker>().id = id;
+        newItem.GetComponent<Model>().id = id;
+        newModel.transform.localScale = new Vector3(80, 80, 80);
         items.Add(newItem);
 
     }
@@ -71,7 +72,7 @@ public class MarkersViewController : MonoBehaviour
         //}
         if (selectedItem != null)
         {
-            debugText.text = selectedItem.gameObject.name + "  " + selectedItem.GetComponent<Marker>().id;
+            debugText.text = selectedItem.gameObject.name + "  " + selectedItem.GetComponent<Model>().id;
         }
     }
 }
